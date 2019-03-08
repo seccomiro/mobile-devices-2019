@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Aula5-UI</string>
+    <string name="email">E-Mail</string>
+    <string name="message">Mensagem</string>
+    <string name="name">Nome</string>
+    <string name="receive_spam">Desejo receber SPAM!</string>
+    <string name="remarks">Desejo receber SPAM!</string>
+    <string name="send">Enviar</string>
+</resources>

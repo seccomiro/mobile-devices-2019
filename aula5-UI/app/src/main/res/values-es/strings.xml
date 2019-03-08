@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Aula5-UI</string>
+    <string name="email">Correo Electrônico</string>
+    <string name="message">Messajita</string>
+    <string name="name">El Nombre del Cabrón</string>
+    <string name="receive_spam">SPAM! YAYAYAY!</string>
+    <string name="remarks">Observaciones</string>
+    <string name="send">Enviá-te</string>
+</resources>
