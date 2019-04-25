@@ -7,5 +7,5 @@ import br.edu.ifpr.stiehl.todolist.entities.Task
 
 @Database(entities = arrayOf(Task::class), version = 1)
 abstract class AppDatabase: RoomDatabase() {
-    abstract fun personDao(): TaskDao
+    abstract fun taskDao(): TaskDao
 }
