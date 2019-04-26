@@ -5,7 +5,7 @@ import br.edu.ifpr.stiehl.todolist.entities.Task
 
 @Dao
 interface TaskDao {
-    @Query("SELECT * FROM tasks ORDER BY id")
+    @Query("SELECT * FROM tasks ORDER BY id DESC")
     fun getAll(): List<Task>
 
     @Query("SELECT * FROM tasks WHERE id = :id LIMIT 1")

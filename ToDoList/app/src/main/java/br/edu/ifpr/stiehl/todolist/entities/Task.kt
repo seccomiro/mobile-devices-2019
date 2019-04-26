@@ -11,4 +11,7 @@ data class Task(
 ) {
     @PrimaryKey(autoGenerate = true)
     var id: Long = 0
+
+    override fun equals(other: Any?) =
+        other != null && (this === other || (this.id != 0L && this.id == (other as Task).id))
 }
