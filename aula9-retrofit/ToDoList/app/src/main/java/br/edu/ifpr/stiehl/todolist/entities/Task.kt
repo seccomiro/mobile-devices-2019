@@ -2,9 +2,11 @@ package br.edu.ifpr.stiehl.todolist.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "tasks")
 data class Task(
+//    @SerializedName("title")
     var title: String,
     var description: String,
     var done: Boolean
