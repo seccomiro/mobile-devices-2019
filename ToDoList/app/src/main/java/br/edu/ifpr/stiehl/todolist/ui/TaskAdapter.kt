@@ -62,11 +62,11 @@ class TaskAdapter(var tasks: MutableList<Task>, var listener: TaskAdapterListene
                     notify(task, true)
                 }
                 itemView.btDelete.setOnClickListener {
+                    val position = tasks.indexOf(task)
+                    notifyItemRemoved(position)
                     listener.taskRemoved(task)
                     tasks.remove(task)
                     taskEditing = null
-                    val position = tasks.indexOf(task)
-                    notifyItemRemoved(position)
                 }
             } else {
                 itemView.lblTitle.text = task.title
