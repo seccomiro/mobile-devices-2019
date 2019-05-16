@@ -31,4 +31,5 @@ class TaskLocalDataSource : TaskDataSource {
     override fun remove(task: Task) = taskDao.remove(task)
     override fun insertAll(tasks: List<Task>) = taskDao.insertAll(tasks)
     override fun removeAll() = taskDao.removeAll()
+    override fun getUnsynchronizedTasks() = taskDao.getUnsynchronizedTasks()
 }

@@ -39,6 +39,10 @@ class TodoActivity : AppCompatActivity(), TaskAdapterListener {
         swipeTasks.setOnRefreshListener {
             loadTasks()
         }
+
+        btSync.setOnClickListener {
+            taskRepository.synchronize()
+        }
     }
 
     override fun onDestroy() {

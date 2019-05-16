@@ -10,6 +10,9 @@ interface TaskDao {
     @Query("SELECT * FROM tasks ORDER BY id DESC")
     fun getAll(): Single<List<Task>>
 
+    @Query("SELECT * FROM tasks WHERE localStatus IS NOT NULL ORDER BY id DESC")
+    fun getUnsynchronizedTasks(): Single<List<Task>>
+
     @Insert
     fun insert(task: Task): Single<Long>
 

@@ -44,4 +44,8 @@ class TaskRemoteDataSource : TaskDataSource {
     override fun removeAll(): Completable {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
+
+    override fun getUnsynchronizedTasks(): Single<List<Task>> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 }

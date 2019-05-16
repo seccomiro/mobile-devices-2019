@@ -29,5 +29,12 @@
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/fab_margin"
             app:srcCompat="@drawable/ic_add"/>
+    <ImageView
+            android:id="@+id/btSync"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            app:srcCompat="@drawable/ic_add" app:layout_anchorGravity="start|bottom" app:layout_anchor="@+id/include3"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

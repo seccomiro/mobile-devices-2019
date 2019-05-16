@@ -78,4 +78,30 @@ class TaskRepository : TaskDataSource {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
+    override fun getUnsynchronizedTasks(): Single<List<Task>> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    fun synchronize() {
+        val d = localDataSource
+            .getUnsynchronizedTasks()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe { tasks ->
+                tasks.forEach { task ->
+                    remoteDataSource
+                        .insert(task)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe { remoteId ->
+                            task.remoteId = remoteId
+                            task.localStatus = null
+                            localDataSource
+                                .update(task)
+                                .subscribe()
+                        }
+                }
+            }
+    }
+
 }

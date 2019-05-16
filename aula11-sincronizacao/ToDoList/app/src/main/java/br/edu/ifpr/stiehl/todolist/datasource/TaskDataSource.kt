@@ -6,6 +6,7 @@ import io.reactivex.Single
 
 interface TaskDataSource {
     fun getAll(): Single<List<Task>>
+    fun getUnsynchronizedTasks(): Single<List<Task>>
     fun insert(task: Task): Single<Long>
     fun insertAll(tasks: List<Task>): Completable
     fun update(task: Task): Completable
