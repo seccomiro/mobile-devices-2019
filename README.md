@@ -1,4 +1,4 @@
-# Repositório com exemplos das aula de Dispositivos Móveis (TADS-17)
+# Repositório com exemplos das aulas de Dispositivos Móveis (TADS-17)
 
 Clone o repositório e abra no Android Studio o projeto desejado.
 
