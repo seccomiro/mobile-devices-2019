@@ -1,10 +1,12 @@
-package br.edu.ifpr.stiehl.newsapp.ui
+package br.edu.ifpr.stiehl.newsapp.ui.adapters
 
 import android.content.Intent
 import android.net.Uri
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import br.edu.ifpr.stiehl.newsapp.R
 import br.edu.ifpr.stiehl.newsapp.entities.Article
@@ -40,11 +42,11 @@ class NewsAdapter(var articles: List<Article>) :
                 .load(article.urlToImage)
                 .into(itemView.imgArticle)
 
-            itemView.setOnClickListener {
-                val uri = Uri.parse(article.url)
-                val intent = Intent(Intent.ACTION_VIEW, uri)
-                itemView.context.startActivity(intent)
-            }
+            val bundle = Bundle()
+            bundle.putSerializable("article", article)
+            itemView.setOnClickListener(
+                Navigation.createNavigateOnClickListener(R.id.toArticle, bundle)
+            )
         }
 
 

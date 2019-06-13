@@ -1,9 +1,13 @@
-package br.edu.ifpr.stiehl.newsapp.app
+package br.edu.ifpr.stiehl.newsapp.ui
 
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.util.Log
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import br.edu.ifpr.stiehl.newsapp.R
 import br.edu.ifpr.stiehl.newsapp.entities.Article
@@ -11,21 +15,28 @@ import br.edu.ifpr.stiehl.newsapp.entities.NewsResult
 import br.edu.ifpr.stiehl.newsapp.services.NewsService
 import br.edu.ifpr.stiehl.newsapp.ui.adapters.NewsAdapter
 import com.google.gson.GsonBuilder
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_news.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class MainActivity : AppCompatActivity() {
+
+class NewsFragment : Fragment() {
 
     lateinit var service: NewsService
     lateinit var adapter: NewsAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_news, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         configureRetrofit()
 
@@ -57,11 +68,22 @@ class MainActivity : AppCompatActivity() {
 
     private fun loadNews(query: String = "") {
 
-        val country =
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
+        val prefs = PreferenceManager.getDefaultSharedPreferences(activity)
+        var country = ""
+
+        if (prefs.contains("country"))
+            country = prefs.getString("country", "")
+        else {
+            country = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
                 resources.configuration.locales[0].country.toLowerCase()
             else
                 resources.configuration.locale.country.toLowerCase()
+
+            prefs
+                .edit()
+                .putString("country", country)
+                .apply()
+        }
 
         service.getNews(query, country).enqueue(object : Callback<NewsResult> {
             override fun onFailure(call: Call<NewsResult>, t: Throwable) {
