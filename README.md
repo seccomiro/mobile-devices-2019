@@ -1,5 +1,5 @@
-# Repositório com exemplos das aulas de Dispositivos Móveis (TADS-17)
+# Mobile Devices (2019) - Android Code examples
 
-Clone o repositório e abra no Android Studio o projeto desejado.
+This repository contains the source code of all the Android (Kotlin) projects that was built during the classes of the subject of Mobile Devices (IFPR 2019).
 
-![Android Studio](https://logospng.org/download/android/logo-android-256.png)
+Please, clone the whole repositoru and choose the desired project.
