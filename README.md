@@ -2,4 +2,4 @@
 
 This repository contains the source code of all the Android (Kotlin) projects that was built during the classes of the subject of Mobile Devices (IFPR 2019).
 
-Please, clone the whole repositoru and choose the desired project.
+Please, clone the whole repository and choose the desired project.
